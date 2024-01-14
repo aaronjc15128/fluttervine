@@ -48,7 +48,6 @@ class _AppState extends State<App> {
     return MaterialApp(
       title: "fluttervine",
 
-
       home: Scaffold(
         backgroundColor: themeColors["Background"],
 
@@ -57,13 +56,32 @@ class _AppState extends State<App> {
           backgroundColor: Colors.transparent,
           shadowColor: Colors.transparent,
 
-          title: Text("FlutterVine", style: TextStyle(color: themeColors["Text"])),
+          title: Text("FlutterVine", style: TextStyle(
+            fontFamily: "Poppins",
+            fontWeight: FontWeight.w300,
+            fontStyle: FontStyle.italic,
+            fontSize: 32,
+            color: themeColors["Text"],
+          )),
         ),
 
         body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Text("Streaming Service", style: TextStyle(color: themeColors["Text"]))
+            Text("Streaming Service", textAlign: TextAlign.center, style: TextStyle(
+              fontFamily: "Poppins",
+              fontWeight: FontWeight.w600,
+              fontStyle: FontStyle.italic,
+              fontSize: 16,
+              color: themeColors["Text"]
+            )),
+            Text("Streaming Service", textAlign: TextAlign.center, style: TextStyle(
+              fontFamily: "Poppins",
+              fontWeight: FontWeight.w600,
+              fontStyle: FontStyle.italic,
+              fontSize: 16,
+              color: themeColors["Text"]
+            )),
           ],
         ),
 
