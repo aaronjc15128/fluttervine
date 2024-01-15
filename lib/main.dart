@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 import 'package:fluttervine/theme_colors.dart';
 
@@ -27,13 +26,8 @@ class App extends StatefulWidget {
 
 class _AppState extends State<App> {
   
-  // Variables & Functions go here
-
-  List<Widget> pages() => <Widget>[
-
-    // pages go here
-
-  ];
+  Color gradientTop = themeColors["Background-Light"];
+  String service = "...";
 
   @override
   void initState() {
@@ -73,7 +67,7 @@ class _AppState extends State<App> {
         body: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
-              colors: [themeColors["Secondary"], themeColors["Background-Transparent"]],
+              colors: [gradientTop, themeColors["Background-Transparent"]],
               begin: Alignment.topCenter,
               end: Alignment.center,
             )
@@ -93,22 +87,35 @@ class _AppState extends State<App> {
                 )),
                 const SizedBox(height: 50),
         
-                Text("Streaming Service", style: TextStyle(
-                  fontFamily: "Poppins",
-                  fontWeight: FontWeight.w600,
-                  fontStyle: FontStyle.italic,
-                  fontSize: 16,
-                  color: themeColors["Text"]
-                )),
+                Row(
+                  children: [
+                    Text("Streaming Service", style: TextStyle(
+                      fontFamily: "Poppins",
+                      fontWeight: FontWeight.w600,
+                      fontStyle: FontStyle.italic,
+                      fontSize: 16,
+                      color: themeColors["Text"],
+                    )),
+                    Text(" ~ $service", style: TextStyle(
+                      fontFamily: "Poppins",
+                      fontWeight: FontWeight.w300,
+                      fontStyle: FontStyle.italic,
+                      fontSize: 16,
+                      color: themeColors["Text"],
+                    )),
+                  ],
+                ),
                 const SizedBox(height: 10),
                 Column(
-        
                   children: [
                     Row(
                       children: [
                         ElevatedButton(
                           onPressed: () {
-                            
+                            setState(() {
+                              gradientTop = themeColors["iPlayer"];
+                              service = "BBC iPlayer";
+                            });
                           },
                           style: ElevatedButton.styleFrom(
                             elevation: 0,
@@ -118,12 +125,15 @@ class _AppState extends State<App> {
                           child: Text("BBC iPlayer", style: TextStyle(
                             fontFamily: "Inter",
                             fontSize: 16,
-                            color: themeColors["Text"]
+                            color: themeColors["Text"],
                           )),
                         ), const SizedBox(width: 5),
                         ElevatedButton(
                           onPressed: () {
-                            
+                            setState(() {
+                              gradientTop = themeColors["ITVX"];
+                              service = "ITVX";
+                            });
                           },
                           style: ElevatedButton.styleFrom(
                             elevation: 0,
@@ -133,12 +143,15 @@ class _AppState extends State<App> {
                           child: Text("ITVX", style: TextStyle(
                             fontFamily: "Inter",
                             fontSize: 16,
-                            color: themeColors["Text"]
+                            color: themeColors["Text"],
                           )),
                         ), const SizedBox(width: 5),
                         ElevatedButton(
                           onPressed: () {
-                            
+                            setState(() {
+                              gradientTop = themeColors["All4"];
+                              service = "All4";
+                            });
                           },
                           style: ElevatedButton.styleFrom(
                             elevation: 0,
@@ -148,12 +161,15 @@ class _AppState extends State<App> {
                           child: Text("All4", style: TextStyle(
                             fontFamily: "Inter",
                             fontSize: 16,
-                            color: themeColors["Text"]
+                            color: themeColors["Text"],
                           )),
                         ), const SizedBox(width: 5),
                         ElevatedButton(
                           onPressed: () {
-                            
+                            setState(() {
+                              gradientTop = themeColors["My5"];
+                              service = "My5";
+                            });
                           },
                           style: ElevatedButton.styleFrom(
                             elevation: 0,
@@ -163,7 +179,7 @@ class _AppState extends State<App> {
                           child: Text("My5", style: TextStyle(
                             fontFamily: "Inter",
                             fontSize: 16,
-                            color: themeColors["Text"]
+                            color: themeColors["Text"],
                           )),
                         ), const SizedBox(width: 5),
                       ],
@@ -172,7 +188,10 @@ class _AppState extends State<App> {
                       children: [
                         ElevatedButton(
                           onPressed: () {
-                            
+                            setState(() {
+                              gradientTop = themeColors["STV"];
+                              service = "STV Player";
+                            });
                           },
                           style: ElevatedButton.styleFrom(
                             elevation: 0,
@@ -182,12 +201,15 @@ class _AppState extends State<App> {
                           child: Text("STV Player", style: TextStyle(
                             fontFamily: "Inter",
                             fontSize: 16,
-                            color: themeColors["Text"]
+                            color: themeColors["Text"],
                           )),
                         ), const SizedBox(width: 5),
                         ElevatedButton(
                           onPressed: () {
-                            
+                            setState(() {
+                              gradientTop = themeColors["UKTVPlay"];
+                              service = "UKTVPlay";
+                            });
                           },
                           style: ElevatedButton.styleFrom(
                             elevation: 0,
@@ -197,7 +219,7 @@ class _AppState extends State<App> {
                           child: Text("UKTVPlay", style: TextStyle(
                             fontFamily: "Inter",
                             fontSize: 16,
-                            color: themeColors["Text"]
+                            color: themeColors["Text"],
                           )),
                         ), const SizedBox(width: 5),
                       ],
@@ -211,7 +233,7 @@ class _AppState extends State<App> {
                   fontWeight: FontWeight.w600,
                   fontStyle: FontStyle.italic,
                   fontSize: 16,
-                  color: themeColors["Text"]
+                  color: themeColors["Text"],
                 )),
                 const SizedBox(height: 50),
         
@@ -220,14 +242,13 @@ class _AppState extends State<App> {
                   fontWeight: FontWeight.w600,
                   fontStyle: FontStyle.italic,
                   fontSize: 16,
-                  color: themeColors["Text"]
+                  color: themeColors["Text"],
                 )),
                 const SizedBox(height: 50),
               ],
             ),
           ),
         ),
-
       ),
     );
   }
