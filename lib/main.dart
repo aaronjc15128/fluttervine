@@ -30,6 +30,9 @@ class _AppState extends State<App> {
   String service = "...";
   late String username;
   late String password;
+  late String url;
+  late String season;
+  late String episode;
   String command = "...";
 
   @override
@@ -244,7 +247,7 @@ class _AppState extends State<App> {
                 Row(
                   children: [
                     SizedBox(
-                      width: 250,
+                      width: 245,
                       height: 50,
                       child: TextField(
                         style: TextStyle(fontFamily: "Inter", fontWeight: FontWeight.w400, color: themeColors["Text"]),
@@ -262,7 +265,7 @@ class _AppState extends State<App> {
                     ),
                     const SizedBox(width: 10),
                     SizedBox(
-                      width: 250,
+                      width: 245,
                       height: 50,
                       child: TextField(
                         style: TextStyle(fontFamily: "Inter", fontWeight: FontWeight.w400, color: themeColors["Text"]),
@@ -285,12 +288,19 @@ class _AppState extends State<App> {
                 /* 
                 * download brainstorm
                 ? choose either:
-                ~ SE
-                ~ name
-                ~ series
-                ~ movie
-                ~ complete
                 
+                ~ name
+                ~ SE
+                ~ comma
+                ~ range
+
+                ~ season
+                ~ comma
+
+                ~ movie
+
+                ~ complete
+
                 */
         
                 // ~ Download
@@ -301,6 +311,104 @@ class _AppState extends State<App> {
                   fontSize: 16,
                   color: themeColors["Text"],
                 )),
+                const SizedBox(height: 10),
+                SizedBox(
+                  width: 500,
+                  height: 50,
+                  child: TextField(
+                    style: TextStyle(fontFamily: "Inter", fontWeight: FontWeight.w400, color: themeColors["Text"]),
+                    obscureText: false,
+                    decoration: InputDecoration(
+                      labelText: "URL",
+                      floatingLabelBehavior: FloatingLabelBehavior.auto,
+                      fillColor: themeColors["Box"],
+                      filled: true,
+                    ),
+                    onChanged: (value) {
+                      url = value;
+                    },
+                  ),
+                ),
+                const SizedBox(height: 10),
+                Row(
+                  children: [
+                    SizedBox(
+                      width: 100,
+                      child: Text("Episode", style: TextStyle(
+                        fontFamily: "Inter",
+                        fontSize: 16,
+                        color: themeColors["Text"],
+                      )),
+                    ),
+                    const SizedBox(width: 20),
+                    SizedBox(
+                      width: 280,
+                      height: 50,
+                      child: TextField(
+                        style: TextStyle(fontFamily: "Inter", fontWeight: FontWeight.w400, color: themeColors["Text"]),
+                        obscureText: false,
+                        decoration: InputDecoration(
+                          labelText: "Name",
+                          floatingLabelBehavior: FloatingLabelBehavior.auto,
+                          fillColor: themeColors["Box"],
+                          filled: true,
+                        ),
+                        onChanged: (value) {
+                          episode = value;
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 10),
+                Row(
+                  children: [
+                    SizedBox(
+                      width: 100,
+                      child: Text("Episode", style: TextStyle(
+                        fontFamily: "Inter",
+                        fontSize: 16,
+                        color: themeColors["Text"],
+                      )),
+                    ),
+                    const SizedBox(width: 20),
+                    SizedBox(
+                      width: 50,
+                      height: 50,
+                      child: TextField(
+                        style: TextStyle(fontFamily: "Inter", fontWeight: FontWeight.w400, color: themeColors["Text"]),
+                        obscureText: false,
+                        decoration: InputDecoration(
+                          labelText: "S #",
+                          floatingLabelBehavior: FloatingLabelBehavior.auto,
+                          fillColor: themeColors["Box"],
+                          filled: true,
+                        ),
+                        onChanged: (value) {
+                          season = value;
+                        },
+                      ),
+                    ),
+                    const SizedBox(width: 10),
+                    SizedBox(
+                      width: 50,
+                      height: 50,
+                      child: TextField(
+                        style: TextStyle(fontFamily: "Inter", fontWeight: FontWeight.w400, color: themeColors["Text"]),
+                        obscureText: false,
+                        decoration: InputDecoration(
+                          labelText: "E #",
+                          floatingLabelBehavior: FloatingLabelBehavior.auto,
+                          fillColor: themeColors["Box"],
+                          filled: true,
+                        ),
+                        onChanged: (value) {
+                          episode = value;
+                        },
+                      ),
+                    ),
+                  ],
+                ),
                 const SizedBox(height: 50),
 
                 // ~ Command
