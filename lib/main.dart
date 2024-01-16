@@ -69,7 +69,7 @@ class _AppState extends State<App> {
             gradient: LinearGradient(
               colors: [gradientTop, themeColors["Background-Transparent"]],
               begin: Alignment.topCenter,
-              end: Alignment.center,
+              end: Alignment.bottomCenter,
             )
           ),
           child: Padding(
