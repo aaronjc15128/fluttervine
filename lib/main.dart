@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 import 'package:fluttervine/theme_colors.dart';
 
@@ -31,7 +30,7 @@ class _AppState extends State<App> {
   String service = "...";
   late String username;
   late String password;
-  String command = "freevine.py get --episode";
+  String command = "...";
 
   @override
   void initState() {
@@ -91,7 +90,7 @@ class _AppState extends State<App> {
                 )),
                 const SizedBox(height: 50),
         
-                // * Streaming Service
+                // ~ Streaming Service
                 Row(
                   children: [
                     Text("Streaming Service", style: TextStyle(
@@ -233,7 +232,7 @@ class _AppState extends State<App> {
                 ),
                 const SizedBox(height: 50),
         
-                // * Profile
+                // ~ Profile
                 Text("Profile", textAlign: TextAlign.left, style: TextStyle(
                   fontFamily: "Poppins",
                   fontWeight: FontWeight.w600,
@@ -246,6 +245,7 @@ class _AppState extends State<App> {
                   children: [
                     SizedBox(
                       width: 250,
+                      height: 50,
                       child: TextField(
                         style: TextStyle(fontFamily: "Inter", fontWeight: FontWeight.w400, color: themeColors["Text"]),
                         obscureText: false,
@@ -263,6 +263,7 @@ class _AppState extends State<App> {
                     const SizedBox(width: 10),
                     SizedBox(
                       width: 250,
+                      height: 50,
                       child: TextField(
                         style: TextStyle(fontFamily: "Inter", fontWeight: FontWeight.w400, color: themeColors["Text"]),
                         obscureText: true,
@@ -280,8 +281,19 @@ class _AppState extends State<App> {
                   ],
                 ),
                 const SizedBox(height: 50),
+
+                /* 
+                * download brainstorm
+                ? choose either:
+                ~ SE
+                ~ name
+                ~ series
+                ~ movie
+                ~ complete
+                
+                */
         
-                // * Download
+                // ~ Download
                 Text("Download", style: TextStyle(
                   fontFamily: "Poppins",
                   fontWeight: FontWeight.w600,
@@ -291,7 +303,7 @@ class _AppState extends State<App> {
                 )),
                 const SizedBox(height: 50),
 
-                // * Command
+                // ~ Command
                 Text("Command", style: TextStyle(
                   fontFamily: "Poppins",
                   fontWeight: FontWeight.w600,
