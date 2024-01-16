@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:fluttervine/theme_colors.dart';
 
@@ -28,6 +29,9 @@ class _AppState extends State<App> {
   
   Color gradientTop = themeColors["Background-Light"];
   String service = "...";
+  late String username;
+  late String password;
+  String command = "freevine.py get --episode";
 
   @override
   void initState() {
@@ -87,6 +91,7 @@ class _AppState extends State<App> {
                 )),
                 const SizedBox(height: 50),
         
+                // * Streaming Service
                 Row(
                   children: [
                     Text("Streaming Service", style: TextStyle(
@@ -228,7 +233,56 @@ class _AppState extends State<App> {
                 ),
                 const SizedBox(height: 50),
         
-                Text("Profile", style: TextStyle(
+                // * Profile
+                Text("Profile", textAlign: TextAlign.left, style: TextStyle(
+                  fontFamily: "Poppins",
+                  fontWeight: FontWeight.w600,
+                  fontStyle: FontStyle.italic,
+                  fontSize: 16,
+                  color: themeColors["Text"],
+                )),
+                const SizedBox(height: 10),
+                Row(
+                  children: [
+                    SizedBox(
+                      width: 250,
+                      child: TextField(
+                        style: TextStyle(fontFamily: "Inter", fontWeight: FontWeight.w400, color: themeColors["Text"]),
+                        obscureText: false,
+                        decoration: InputDecoration(
+                          labelText: "Username",
+                          floatingLabelBehavior: FloatingLabelBehavior.auto,
+                          fillColor: themeColors["Box"],
+                          filled: true,
+                        ),
+                        onChanged: (value) {
+                          username = value;
+                        },
+                      ),
+                    ),
+                    const SizedBox(width: 10),
+                    SizedBox(
+                      width: 250,
+                      child: TextField(
+                        style: TextStyle(fontFamily: "Inter", fontWeight: FontWeight.w400, color: themeColors["Text"]),
+                        obscureText: true,
+                        decoration: InputDecoration(
+                          labelText: "Password",
+                          floatingLabelBehavior: FloatingLabelBehavior.auto,
+                          fillColor: themeColors["Box"],
+                          filled: true,
+                        ),
+                        onChanged: (value) {
+                          password = value;
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 50),
+        
+                // * Download
+                Text("Download", style: TextStyle(
                   fontFamily: "Poppins",
                   fontWeight: FontWeight.w600,
                   fontStyle: FontStyle.italic,
@@ -236,11 +290,17 @@ class _AppState extends State<App> {
                   color: themeColors["Text"],
                 )),
                 const SizedBox(height: 50),
-        
-                Text("Download", style: TextStyle(
+
+                // * Command
+                Text("Command", style: TextStyle(
                   fontFamily: "Poppins",
                   fontWeight: FontWeight.w600,
                   fontStyle: FontStyle.italic,
+                  fontSize: 16,
+                  color: themeColors["Text"],
+                )),
+                Text(command, style: TextStyle(
+                  fontFamily: "Inter",
                   fontSize: 16,
                   color: themeColors["Text"],
                 )),
