@@ -35,6 +35,17 @@ class _AppState extends State<App> {
   late String episode;
   String command = "...";
 
+  /*
+  ? not very efficient
+  bool togA = false;
+  bool togB = false;
+  bool togC = false;
+  bool togD = false;
+  */
+
+  // ~ use list instead
+  List<bool> toggle = [false, false, false, false];
+
   @override
   void initState() {
     super.initState();
@@ -57,7 +68,7 @@ class _AppState extends State<App> {
           preferredSize: const Size.fromHeight(80),
           child: AppBar(
             elevation: 0,
-            actions: const [], // TODO: Add donate & github buttons
+            actions: const [],
             backgroundColor: Colors.transparent,
 
             title: Text("FlutterVine", style: TextStyle(
@@ -284,25 +295,8 @@ class _AppState extends State<App> {
                   ],
                 ),
                 const SizedBox(height: 50),
-
-                /* 
-                * download brainstorm
-                ? choose either:
-                
-                ~ name
-                ~ SE
-                ~ comma
-                ~ range
-
-                ~ season
-                ~ comma
-
-                ~ movie
-
-                ~ complete
-
-                */
         
+
                 // ~ Download
                 Text("Download", style: TextStyle(
                   fontFamily: "Poppins",
@@ -332,17 +326,31 @@ class _AppState extends State<App> {
                 const SizedBox(height: 10),
                 Row(
                   children: [
+                    IconButton(
+                      onPressed: () {
+                        setState(() {
+                          if (toggle[0]) {
+                            toggle[0] = false;
+                          }
+                          else {
+                            toggle[0] = true;
+                          }
+                          toggle[1] = toggle[2] = toggle[3] = false;
+                        });
+                      },
+                      icon: Icon(toggle[0] ? Icons.check_circle_rounded : Icons.circle_outlined, size: 20, color: themeColors["Text"]),
+                    ),
+                    const SizedBox(width: 5),
                     SizedBox(
-                      width: 100,
+                      width: 150,
                       child: Text("Episode", style: TextStyle(
                         fontFamily: "Inter",
                         fontSize: 16,
                         color: themeColors["Text"],
                       )),
                     ),
-                    const SizedBox(width: 20),
                     SizedBox(
-                      width: 280,
+                      width: 305,
                       height: 50,
                       child: TextField(
                         style: TextStyle(fontFamily: "Inter", fontWeight: FontWeight.w400, color: themeColors["Text"]),
@@ -363,15 +371,29 @@ class _AppState extends State<App> {
                 const SizedBox(height: 10),
                 Row(
                   children: [
+                    IconButton(
+                      onPressed: () {
+                        setState(() {
+                          if (toggle[1]) {
+                            toggle[1] = false;
+                          }
+                          else {
+                            toggle[1] = true;
+                          }
+                          toggle[0] = toggle[2] = toggle[3] = false;
+                        });
+                      },
+                      icon: Icon(toggle[1] ? Icons.check_circle_rounded : Icons.circle_outlined, size: 20, color: themeColors["Text"]),
+                    ),
+                    const SizedBox(width: 5),
                     SizedBox(
-                      width: 100,
+                      width: 150,
                       child: Text("Episode", style: TextStyle(
                         fontFamily: "Inter",
                         fontSize: 16,
                         color: themeColors["Text"],
                       )),
                     ),
-                    const SizedBox(width: 20),
                     SizedBox(
                       width: 50,
                       height: 50,
@@ -409,6 +431,159 @@ class _AppState extends State<App> {
                     ),
                   ],
                 ),
+                const SizedBox(height: 10),
+                Row(
+                  children: [
+                    IconButton(
+                      onPressed: () {
+                        setState(() {
+                          if (toggle[2]) {
+                            toggle[2] = false;
+                          }
+                          else {
+                            toggle[2] = true;
+                          }
+                          toggle[0] = toggle[1] = toggle[3] = false;
+                        });
+                      },
+                      icon: Icon(toggle[2] ? Icons.check_circle_rounded : Icons.circle_outlined, size: 20, color: themeColors["Text"]),
+                    ),
+                    const SizedBox(width: 5),
+                    SizedBox(
+                      width: 150,
+                      child: Text("Episode Range", style: TextStyle(
+                        fontFamily: "Inter",
+                        fontSize: 16,
+                        color: themeColors["Text"],
+                      )),
+                    ),
+                    SizedBox(
+                      width: 50,
+                      height: 50,
+                      child: TextField(
+                        style: TextStyle(fontFamily: "Inter", fontWeight: FontWeight.w400, color: themeColors["Text"]),
+                        obscureText: false,
+                        decoration: InputDecoration(
+                          labelText: "S #",
+                          floatingLabelBehavior: FloatingLabelBehavior.auto,
+                          fillColor: themeColors["Box"],
+                          filled: true,
+                        ),
+                        onChanged: (value) {
+                          season = value;
+                        },
+                      ),
+                    ),
+                    const SizedBox(width: 10),
+                    SizedBox(
+                      width: 50,
+                      height: 50,
+                      child: TextField(
+                        style: TextStyle(fontFamily: "Inter", fontWeight: FontWeight.w400, color: themeColors["Text"]),
+                        obscureText: false,
+                        decoration: InputDecoration(
+                          labelText: "E #",
+                          floatingLabelBehavior: FloatingLabelBehavior.auto,
+                          fillColor: themeColors["Box"],
+                          filled: true,
+                        ),
+                        onChanged: (value) {
+                          episode = value;
+                        },
+                      ),
+                    ),
+                    SizedBox(
+                      width: 30,
+                      child: Text("-", textAlign: TextAlign.center, style: TextStyle(
+                        fontFamily: "Inter",
+                        fontSize: 16,
+                        color: themeColors["Text"],
+                      )),
+                    ),
+                    SizedBox(
+                      width: 50,
+                      height: 50,
+                      child: TextField(
+                        style: TextStyle(fontFamily: "Inter", fontWeight: FontWeight.w400, color: themeColors["Text"]),
+                        obscureText: false,
+                        decoration: InputDecoration(
+                          labelText: "S #",
+                          floatingLabelBehavior: FloatingLabelBehavior.auto,
+                          fillColor: themeColors["Box"],
+                          filled: true,
+                        ),
+                        onChanged: (value) {
+                          season = value;
+                        },
+                      ),
+                    ),
+                    const SizedBox(width: 10),
+                    SizedBox(
+                      width: 50,
+                      height: 50,
+                      child: TextField(
+                        style: TextStyle(fontFamily: "Inter", fontWeight: FontWeight.w400, color: themeColors["Text"]),
+                        obscureText: false,
+                        decoration: InputDecoration(
+                          labelText: "E #",
+                          floatingLabelBehavior: FloatingLabelBehavior.auto,
+                          fillColor: themeColors["Box"],
+                          filled: true,
+                        ),
+                        onChanged: (value) {
+                          episode = value;
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 10),
+                Row(
+                  children: [
+                    IconButton(
+                      onPressed: () {
+                        setState(() {
+                          if (toggle[3]) {
+                            toggle[3] = false;
+                          }
+                          else {
+                            toggle[3] = true;
+                          }
+                          toggle[0] = toggle[1] = toggle[2] = false;
+                        });
+                      },
+                      icon: Icon(toggle[3] ? Icons.check_circle_rounded : Icons.circle_outlined, size: 20, color: themeColors["Text"]),
+                    ),
+                    const SizedBox(width: 5),
+                    SizedBox(
+                      width: 150,
+                      child: Text("Season", style: TextStyle(
+                        fontFamily: "Inter",
+                        fontSize: 16,
+                        color: themeColors["Text"],
+                      )),
+                    ),
+                    SizedBox(
+                      width: 50,
+                      height: 50,
+                      child: TextField(
+                        style: TextStyle(fontFamily: "Inter", fontWeight: FontWeight.w400, color: themeColors["Text"]),
+                        obscureText: false,
+                        decoration: InputDecoration(
+                          labelText: "S #",
+                          floatingLabelBehavior: FloatingLabelBehavior.auto,
+                          fillColor: themeColors["Box"],
+                          filled: true,
+                        ),
+                        onChanged: (value) {
+                          season = value;
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+
+
                 const SizedBox(height: 50),
 
                 // ~ Command
