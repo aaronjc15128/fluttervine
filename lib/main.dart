@@ -137,8 +137,9 @@ class _AppState extends State<App> {
                           },
                           style: ElevatedButton.styleFrom(
                             elevation: 0,
-                            fixedSize: const Size(130, 40),
+                            fixedSize: const Size(140, 40),
                             backgroundColor: themeColors["Box"],
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                           ),
                           child: Text("BBC iPlayer", style: TextStyle(
                             fontFamily: "Inter",
@@ -155,8 +156,9 @@ class _AppState extends State<App> {
                           },
                           style: ElevatedButton.styleFrom(
                             elevation: 0,
-                            fixedSize: const Size(130, 40),
+                            fixedSize: const Size(140, 40),
                             backgroundColor: themeColors["Box"],
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                           ),
                           child: Text("ITVX", style: TextStyle(
                             fontFamily: "Inter",
@@ -173,8 +175,9 @@ class _AppState extends State<App> {
                           },
                           style: ElevatedButton.styleFrom(
                             elevation: 0,
-                            fixedSize: const Size(130, 40),
+                            fixedSize: const Size(140, 40),
                             backgroundColor: themeColors["Box"],
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                           ),
                           child: Text("All4", style: TextStyle(
                             fontFamily: "Inter",
@@ -191,8 +194,9 @@ class _AppState extends State<App> {
                           },
                           style: ElevatedButton.styleFrom(
                             elevation: 0,
-                            fixedSize: const Size(130, 40),
+                            fixedSize: const Size(140, 40),
                             backgroundColor: themeColors["Box"],
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                           ),
                           child: Text("My5", style: TextStyle(
                             fontFamily: "Inter",
@@ -213,8 +217,9 @@ class _AppState extends State<App> {
                           },
                           style: ElevatedButton.styleFrom(
                             elevation: 0,
-                            fixedSize: const Size(130, 40),
+                            fixedSize: const Size(140, 40),
                             backgroundColor: themeColors["Box"],
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                           ),
                           child: Text("STV Player", style: TextStyle(
                             fontFamily: "Inter",
@@ -231,8 +236,9 @@ class _AppState extends State<App> {
                           },
                           style: ElevatedButton.styleFrom(
                             elevation: 0,
-                            fixedSize: const Size(130, 40),
+                            fixedSize: const Size(140, 40),
                             backgroundColor: themeColors["Box"],
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                           ),
                           child: Text("UKTVPlay", style: TextStyle(
                             fontFamily: "Inter",
