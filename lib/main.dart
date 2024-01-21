@@ -33,10 +33,43 @@ class _AppState extends State<App> {
   late String url;
   late String season;
   late String episode;
+  late String season2;
+  late String episode2;
+  String download = "...";
+  String titles = "...";
   String command = "...";
 
   List<bool> toggle = [false, false, false, false];
   List<double> toggleOpacity = [0.2, 0.2, 0.2, 0.2];
+
+  void getCommand() {
+    setState(() {
+      command = 'freevine.py profile --username "$username" --password "$password" --service "$service"';
+      command = '$command && freevine.py get --titles "$url"';
+
+      
+
+      if (toggle[0]) {
+        command = '$command && freevine.py get --episode "$episode" "$url"';
+      }
+      else {
+        if (season.length == 1) {
+          season = "0$season";
+        }
+
+        if (toggle[1]) {
+          command = '$command && freevine.py get --episode S${season}E$episode "$url"';
+        }
+        else if (toggle[2]) {
+          command = '$command && freevine.py get --episode S${season}E$episode-S${season2}E$episode2 "$url"';
+        }
+        else if (toggle[3]) {
+          command = '$command && freevine.py get --season S$season "$url"';
+        }
+      }
+    });
+  
+  }
 
   @override
   void initState() {
@@ -528,7 +561,7 @@ class _AppState extends State<App> {
                             filled: true,
                           ),
                           onChanged: (value) {
-                            season = value;
+                            season2 = value;
                           },
                         ),
                       ),
@@ -546,7 +579,7 @@ class _AppState extends State<App> {
                             filled: true,
                           ),
                           onChanged: (value) {
-                            episode = value;
+                            episode2 = value;
                           },
                         ),
                       ),
@@ -604,9 +637,67 @@ class _AppState extends State<App> {
                     ],
                   ),
                 ),
-
-
                 const SizedBox(height: 50),
+                Row(
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {
+                        getCommand();
+                      },
+                      style: ElevatedButton.styleFrom(
+                        elevation: 0,
+                        fixedSize: const Size(140, 40),
+                        backgroundColor: themeColors["Box"],
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                      ),
+                      child: Text("Command", style: TextStyle(
+                        fontFamily: "Inter",
+                        fontWeight: FontWeight.w600,
+                        fontSize: 16,
+                        color: themeColors["Text"],
+                      )),
+                    ),
+                    const SizedBox(width: 10),
+                    ElevatedButton(
+                      onPressed: () {
+                        
+                      },
+                      style: ElevatedButton.styleFrom(
+                        elevation: 0,
+                        fixedSize: const Size(140, 40),
+                        backgroundColor: themeColors["Box"],
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                      ),
+                      child: Text("Titles", style: TextStyle(
+                        fontFamily: "Inter",
+                        fontWeight: FontWeight.w600,
+                        fontSize: 16,
+                        color: themeColors["Text"],
+                      )),
+                    ),
+                    const SizedBox(width: 10),
+                    ElevatedButton(
+                      onPressed: () {
+                        
+                      },
+                      style: ElevatedButton.styleFrom(
+                        elevation: 0,
+                        fixedSize: const Size(140, 40),
+                        backgroundColor: themeColors["Box"],
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                      ),
+                      child: Text("Download", style: TextStyle(
+                        fontFamily: "Inter",
+                        fontWeight: FontWeight.w600,
+                        fontSize: 16,
+                        color: themeColors["Text"],
+                      )),
+                    ),
+                  ],
+                ),
+
+
+                const SizedBox(height: 30),
 
                 // ~ Command
                 Text("Command", style: TextStyle(
@@ -621,7 +712,37 @@ class _AppState extends State<App> {
                   fontSize: 16,
                   color: themeColors["Text"],
                 )),
-                const SizedBox(height: 50),
+                const SizedBox(height: 30),
+
+                // ~ Titles
+                Text("Titles", style: TextStyle(
+                  fontFamily: "Poppins",
+                  fontWeight: FontWeight.w600,
+                  fontStyle: FontStyle.italic,
+                  fontSize: 16,
+                  color: themeColors["Text"],
+                )),
+                Text(titles, style: TextStyle(
+                  fontFamily: "Inter",
+                  fontSize: 16,
+                  color: themeColors["Text"],
+                )),
+                const SizedBox(height: 30),
+
+                // ~ Download
+                Text("Downloading...", style: TextStyle(
+                  fontFamily: "Poppins",
+                  fontWeight: FontWeight.w600,
+                  fontStyle: FontStyle.italic,
+                  fontSize: 16,
+                  color: themeColors["Text"],
+                )),
+                Text(download, style: TextStyle(
+                  fontFamily: "Inter",
+                  fontSize: 16,
+                  color: themeColors["Text"],
+                )),
+                const SizedBox(height: 30),
               ],
             ),
           ),
