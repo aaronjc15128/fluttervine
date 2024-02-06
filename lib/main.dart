@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-// TODO: add dart:io
+import 'dart:io';
 
 import 'package:fluttervine/theme_colors.dart';
 
@@ -36,7 +36,7 @@ class _AppState extends State<App> {
   late String episode;
   late String season2;
   late String episode2;
-  String download = "...";
+  List<String> download = ["...", "...", "..."];
   String titles = "...";
   List<String> commands = ["...", "...", "..."];
 
@@ -72,6 +72,18 @@ class _AppState extends State<App> {
           commands[2] = 'freevine.py get --season S$season "$url"';
         }
       }
+    });
+  }
+
+  void runCommand() async {
+    String command = 'echo "Hello World!"';
+
+    ProcessResult result = await Process.run(command, []);
+
+    setState(() {
+      download[0] = 'Exit code: ${result.exitCode}';
+      download[1] = 'stdout: ${result.stdout}';
+      download[2] = 'stderr: ${result.stderr}';
     });
   }
 
@@ -683,7 +695,7 @@ class _AppState extends State<App> {
                       const SizedBox(width: 10),
                       ElevatedButton(
                         onPressed: () {
-                          
+                          runCommand();
                         },
                         style: ElevatedButton.styleFrom(
                           elevation: 0,
@@ -752,7 +764,17 @@ class _AppState extends State<App> {
                     fontSize: 16,
                     color: themeColors["Text"],
                   )),
-                  Text(download, style: TextStyle(
+                  Text(download[0], style: TextStyle(
+                    fontFamily: "Inter",
+                    fontSize: 16,
+                    color: themeColors["Text"],
+                  )),
+                  Text(download[1], style: TextStyle(
+                    fontFamily: "Inter",
+                    fontSize: 16,
+                    color: themeColors["Text"],
+                  )),
+                  Text(download[2], style: TextStyle(
                     fontFamily: "Inter",
                     fontSize: 16,
                     color: themeColors["Text"],
