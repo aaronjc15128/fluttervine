@@ -38,36 +38,41 @@ class _AppState extends State<App> {
   late String episode2;
   String download = "...";
   String titles = "...";
-  String command = "...";
+  List<String> commands = ["...", "...", "..."];
 
   List<bool> toggle = [false, false, false, false];
   List<double> toggleOpacity = [0.2, 0.2, 0.2, 0.2];
 
   void getCommand() {
     setState(() {
-      command = 'freevine.py profile --username "$username" --password "$password" --service "$service"';
-      command = '$command && freevine.py get --titles "$url"';
+      if (service != "...") {
+        commands[0] = 'freevine.py profile --username "$username" --password "$password" --service "$service"';
+      }
+    });
 
+    setState(() {
+      commands[1] = 'freevine.py get --titles "$url"';
+    });
+
+    setState(() {
       if (toggle[0]) {
-        command = '$command && freevine.py get --episode "$episode" "$url"';
+        commands[2] = 'freevine.py get --episode "$episode" "$url"';
       }
       else {
         if (season.length == 1) {
           season = "0$season";
         }
-
         if (toggle[1]) {
-          command = '$command && freevine.py get --episode S${season}E$episode "$url"';
+          commands[2] = 'freevine.py get --episode S${season}E$episode "$url"';
         }
         else if (toggle[2]) {
-          command = '$command && freevine.py get --episode S${season}E$episode-S${season2}E$episode2 "$url"';
+          commands[2] = 'freevine.py get --episode S${season}E$episode-S${season2}E$episode2 "$url"';
         }
         else if (toggle[3]) {
-          command = '$command && freevine.py get --season S$season "$url"';
+          commands[2] = 'freevine.py get --season S$season "$url"';
         }
       }
     });
-  
   }
 
   @override
@@ -650,7 +655,7 @@ class _AppState extends State<App> {
                           backgroundColor: themeColors["Box"],
                           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                         ),
-                        child: Text("Command", style: TextStyle(
+                        child: Text("Commands", style: TextStyle(
                           fontFamily: "Inter",
                           fontWeight: FontWeight.w600,
                           fontSize: 16,
@@ -699,15 +704,25 @@ class _AppState extends State<App> {
             
                   const SizedBox(height: 30),
             
-                  // ~ Command
-                  Text("Command", style: TextStyle(
+                  // ~ Commands
+                  Text("Commands", style: TextStyle(
                     fontFamily: "Poppins",
                     fontWeight: FontWeight.w600,
                     fontStyle: FontStyle.italic,
                     fontSize: 16,
                     color: themeColors["Text"],
                   )),
-                  Text(command, style: TextStyle(
+                  Text(commands[0], style: TextStyle(
+                    fontFamily: "Inter",
+                    fontSize: 16,
+                    color: themeColors["Text"],
+                  )),
+                  Text(commands[1], style: TextStyle(
+                    fontFamily: "Inter",
+                    fontSize: 16,
+                    color: themeColors["Text"],
+                  )),
+                  Text(commands[2], style: TextStyle(
                     fontFamily: "Inter",
                     fontSize: 16,
                     color: themeColors["Text"],
