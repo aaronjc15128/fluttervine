@@ -83,21 +83,35 @@ class _AppState extends State<App> {
   }
 
   void runTitles() async {
-    ProcessResult resultA = await Process.run("freevine.py get", parameters[1]); // ? titles
-    setState(() {
-      download = resultA.stdout;
-    });
+    try {
+      ProcessResult resultA = await Process.run("freevine.py get", parameters[1]); // ? titles
+      setState(() {
+        titles = resultA.stdout;
+      });
+    }
+    catch (e) {
+      setState(() {
+        titles = "Oops! An exception occurred:\n$e";
+      });
+    }
   }
 
   void runDownload() async {
-    ProcessResult resultA = await Process.run("freevine.py get", parameters[0]); // ? profile
-    setState(() {
-      download = resultA.stdout;
-    });
-    ProcessResult resultB = await Process.run("freevine.py get", parameters[2]); // ? download
-    setState(() {
-      download = resultB.stdout;
-    });
+    try {
+      ProcessResult resultA = await Process.run("freevine.py get", parameters[0]); // ? profile
+      setState(() {
+        download = resultA.stdout;
+      });
+      ProcessResult resultB = await Process.run("freevine.py get", parameters[2]); // ? download
+      setState(() {
+        download = resultB.stdout;
+      });
+    }
+    catch (e) {
+      setState(() {
+        download = "Oh no! An exception occurred:\n$e";
+      });
+    }
   }
 
   @override
