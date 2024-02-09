@@ -36,9 +36,10 @@ class _AppState extends State<App> {
   late String episode;
   late String season2;
   late String episode2;
-  List<String> download = ["...", "...", "..."];
+  String download = "...";
   String titles = "...";
   List<String> commands = ["...", "...", "..."];
+  List<List<String>> parameters = [[], [], []];
 
   List<bool> toggle = [false, false, false, false];
   List<double> toggleOpacity = [0.2, 0.2, 0.2, 0.2];
@@ -47,16 +48,19 @@ class _AppState extends State<App> {
     setState(() {
       if (service != "...") {
         commands[0] = 'freevine.py profile --username "$username" --password "$password" --service "$service"';
+        parameters[0] = ["--username '$username'", "--password '$password'", "--service '$service'"];
       }
     });
 
     setState(() {
       commands[1] = 'freevine.py get --titles "$url"';
+      parameters[1] = ["--titles '$url'"];
     });
 
     setState(() {
       if (toggle[0]) {
         commands[2] = 'freevine.py get --episode "$episode" "$url"';
+        parameters[2] = ["--episode '$episode' '$url'"];
       }
       else {
         if (season.length == 1) {
@@ -64,26 +68,35 @@ class _AppState extends State<App> {
         }
         if (toggle[1]) {
           commands[2] = 'freevine.py get --episode S${season}E$episode "$url"';
+          parameters[2] = ["--episode S${season}E$episode '$url'"];
         }
         else if (toggle[2]) {
           commands[2] = 'freevine.py get --episode S${season}E$episode-S${season2}E$episode2 "$url"';
+          parameters[2] = ["--episode S${season}E$episode-S${season2}E$episode2 '$url'"];
         }
         else if (toggle[3]) {
           commands[2] = 'freevine.py get --season S$season "$url"';
+          parameters[2] = ["--season S$season '$url'"];
         }
       }
     });
   }
 
-  void runCommand() async {
-    String command = 'echo "Hello World!"';
-
-    ProcessResult result = await Process.run(command, []);
-
+  void runTitles() async {
+    ProcessResult resultA = await Process.run("freevine.py get", parameters[1]); // ? titles
     setState(() {
-      download[0] = 'Exit code: ${result.exitCode}';
-      download[1] = 'stdout: ${result.stdout}';
-      download[2] = 'stderr: ${result.stderr}';
+      download = resultA.stdout;
+    });
+  }
+
+  void runDownload() async {
+    ProcessResult resultA = await Process.run("freevine.py get", parameters[0]); // ? profile
+    setState(() {
+      download = resultA.stdout;
+    });
+    ProcessResult resultB = await Process.run("freevine.py get", parameters[2]); // ? download
+    setState(() {
+      download = resultB.stdout;
     });
   }
 
@@ -655,6 +668,8 @@ class _AppState extends State<App> {
                     ),
                   ),
                   const SizedBox(height: 50),
+                  
+                  // ~ Buttons
                   Row(
                     children: [
                       ElevatedButton(
@@ -677,7 +692,7 @@ class _AppState extends State<App> {
                       const SizedBox(width: 10),
                       ElevatedButton(
                         onPressed: () {
-                          
+                          runTitles();
                         },
                         style: ElevatedButton.styleFrom(
                           elevation: 0,
@@ -695,7 +710,7 @@ class _AppState extends State<App> {
                       const SizedBox(width: 10),
                       ElevatedButton(
                         onPressed: () {
-                          runCommand();
+                          runDownload();
                         },
                         style: ElevatedButton.styleFrom(
                           elevation: 0,
@@ -764,17 +779,7 @@ class _AppState extends State<App> {
                     fontSize: 16,
                     color: themeColors["Text"],
                   )),
-                  Text(download[0], style: TextStyle(
-                    fontFamily: "Inter",
-                    fontSize: 16,
-                    color: themeColors["Text"],
-                  )),
-                  Text(download[1], style: TextStyle(
-                    fontFamily: "Inter",
-                    fontSize: 16,
-                    color: themeColors["Text"],
-                  )),
-                  Text(download[2], style: TextStyle(
+                  Text(download, style: TextStyle(
                     fontFamily: "Inter",
                     fontSize: 16,
                     color: themeColors["Text"],
