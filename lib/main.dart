@@ -123,8 +123,10 @@ class _AppState extends State<App> {
   }
 
   void runTitles() async {
+    String commandStart = "$scriptPath get";
+
     try {
-      ProcessResult resultA = await Process.run("freevine.py get", parameters[1]); // ? titles
+      ProcessResult resultA = await Process.run(commandStart, parameters[1]); // ? titles
       setState(() {
         titles = resultA.stdout;
       });
@@ -137,12 +139,14 @@ class _AppState extends State<App> {
   }
 
   void runDownload() async {
+    String commandStart = "$scriptPath get";
+
     try {
-      ProcessResult resultA = await Process.run("freevine.py get", parameters[0]); // ? profile
+      ProcessResult resultA = await Process.run(commandStart, parameters[0]); // ? profile
       setState(() {
         download = resultA.stdout;
       });
-      ProcessResult resultB = await Process.run("freevine.py get", parameters[2]); // ? download
+      ProcessResult resultB = await Process.run(commandStart, parameters[2]); // ? download
       setState(() {
         download = resultB.stdout;
       });
