@@ -170,6 +170,15 @@ class _AppState extends State<App> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "fluttervine",
+      theme: ThemeData(
+        inputDecorationTheme: InputDecorationTheme(
+          focusColor: gradientTop,
+          fillColor: gradientTop,
+          iconColor: gradientTop,
+          prefixIconColor: gradientTop,
+          suffixIconColor: gradientTop,
+        ),
+      ),
 
       home: Scaffold(
         extendBodyBehindAppBar: true,
@@ -391,6 +400,7 @@ class _AppState extends State<App> {
                         width: 245,
                         height: 50,
                         child: TextField(
+                          cursorColor: gradientTop,
                           style: TextStyle(fontFamily: "Inter", fontWeight: FontWeight.w400, color: themeColors["Text"]),
                           obscureText: false,
                           decoration: InputDecoration(
@@ -398,6 +408,10 @@ class _AppState extends State<App> {
                             floatingLabelBehavior: FloatingLabelBehavior.auto,
                             fillColor: themeColors["Box"],
                             filled: true,
+                            floatingLabelStyle: TextStyle(fontFamily: "Inter", fontWeight: FontWeight.w400, color: gradientTop),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: gradientTop),
+                            ),
                           ),
                           onChanged: (value) {
                             username = value;
@@ -409,6 +423,7 @@ class _AppState extends State<App> {
                         width: 245,
                         height: 50,
                         child: TextField(
+                          cursorColor: gradientTop,
                           style: TextStyle(fontFamily: "Inter", fontWeight: FontWeight.w400, color: themeColors["Text"]),
                           obscureText: true,
                           decoration: InputDecoration(
@@ -416,6 +431,10 @@ class _AppState extends State<App> {
                             floatingLabelBehavior: FloatingLabelBehavior.auto,
                             fillColor: themeColors["Box"],
                             filled: true,
+                            floatingLabelStyle: TextStyle(fontFamily: "Inter", fontWeight: FontWeight.w400, color: gradientTop),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: gradientTop),
+                            ),
                           ),
                           onChanged: (value) {
                             password = value;
@@ -440,6 +459,7 @@ class _AppState extends State<App> {
                     width: 500,
                     height: 50,
                     child: TextField(
+                      cursorColor: gradientTop,
                       style: TextStyle(fontFamily: "Inter", fontWeight: FontWeight.w400, color: themeColors["Text"]),
                       obscureText: false,
                       decoration: InputDecoration(
@@ -447,6 +467,10 @@ class _AppState extends State<App> {
                         floatingLabelBehavior: FloatingLabelBehavior.auto,
                         fillColor: themeColors["Box"],
                         filled: true,
+                        floatingLabelStyle: TextStyle(fontFamily: "Inter", fontWeight: FontWeight.w400, color: gradientTop),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: gradientTop),
+                        ),
                       ),
                       onChanged: (value) {
                         url = value;
@@ -488,6 +512,7 @@ class _AppState extends State<App> {
                           width: 305,
                           height: 50,
                           child: TextField(
+                            cursorColor: gradientTop,
                             style: TextStyle(fontFamily: "Inter", fontWeight: FontWeight.w400, color: themeColors["Text"]),
                             obscureText: false,
                             decoration: InputDecoration(
@@ -495,6 +520,10 @@ class _AppState extends State<App> {
                               floatingLabelBehavior: FloatingLabelBehavior.auto,
                               fillColor: themeColors["Box"],
                               filled: true,
+                              floatingLabelStyle: TextStyle(fontFamily: "Inter", fontWeight: FontWeight.w400, color: gradientTop),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: gradientTop),
+                              ),
                             ),
                             onChanged: (value) {
                               episode = value;
@@ -536,9 +565,10 @@ class _AppState extends State<App> {
                           )),
                         ),
                         SizedBox(
-                          width: 50,
+                          width: 60,
                           height: 50,
                           child: TextField(
+                            cursorColor: gradientTop,
                             style: TextStyle(fontFamily: "Inter", fontWeight: FontWeight.w400, color: themeColors["Text"]),
                             obscureText: false,
                             decoration: InputDecoration(
@@ -546,6 +576,10 @@ class _AppState extends State<App> {
                               floatingLabelBehavior: FloatingLabelBehavior.auto,
                               fillColor: themeColors["Box"],
                               filled: true,
+                              floatingLabelStyle: TextStyle(fontFamily: "Inter", fontWeight: FontWeight.w400, color: gradientTop),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: gradientTop),
+                              ),
                             ),
                             onChanged: (value) {
                               season = value;
@@ -554,9 +588,10 @@ class _AppState extends State<App> {
                         ),
                         const SizedBox(width: 10),
                         SizedBox(
-                          width: 50,
+                          width: 60,
                           height: 50,
                           child: TextField(
+                            cursorColor: gradientTop,
                             style: TextStyle(fontFamily: "Inter", fontWeight: FontWeight.w400, color: themeColors["Text"]),
                             obscureText: false,
                             decoration: InputDecoration(
@@ -564,6 +599,10 @@ class _AppState extends State<App> {
                               floatingLabelBehavior: FloatingLabelBehavior.auto,
                               fillColor: themeColors["Box"],
                               filled: true,
+                              floatingLabelStyle: TextStyle(fontFamily: "Inter", fontWeight: FontWeight.w400, color: gradientTop),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: gradientTop),
+                              ),
                             ),
                             onChanged: (value) {
                               episode = value;
@@ -605,9 +644,10 @@ class _AppState extends State<App> {
                           )),
                         ),
                         SizedBox(
-                          width: 50,
+                          width: 60,
                           height: 50,
                           child: TextField(
+                            cursorColor: gradientTop,
                             style: TextStyle(fontFamily: "Inter", fontWeight: FontWeight.w400, color: themeColors["Text"]),
                             obscureText: false,
                             decoration: InputDecoration(
@@ -615,6 +655,10 @@ class _AppState extends State<App> {
                               floatingLabelBehavior: FloatingLabelBehavior.auto,
                               fillColor: themeColors["Box"],
                               filled: true,
+                              floatingLabelStyle: TextStyle(fontFamily: "Inter", fontWeight: FontWeight.w400, color: gradientTop),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: gradientTop),
+                              ),
                             ),
                             onChanged: (value) {
                               season = value;
@@ -623,9 +667,10 @@ class _AppState extends State<App> {
                         ),
                         const SizedBox(width: 10),
                         SizedBox(
-                          width: 50,
+                          width: 60,
                           height: 50,
                           child: TextField(
+                            cursorColor: gradientTop,
                             style: TextStyle(fontFamily: "Inter", fontWeight: FontWeight.w400, color: themeColors["Text"]),
                             obscureText: false,
                             decoration: InputDecoration(
@@ -633,6 +678,10 @@ class _AppState extends State<App> {
                               floatingLabelBehavior: FloatingLabelBehavior.auto,
                               fillColor: themeColors["Box"],
                               filled: true,
+                              floatingLabelStyle: TextStyle(fontFamily: "Inter", fontWeight: FontWeight.w400, color: gradientTop),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: gradientTop),
+                              ),
                             ),
                             onChanged: (value) {
                               episode = value;
@@ -648,9 +697,10 @@ class _AppState extends State<App> {
                           )),
                         ),
                         SizedBox(
-                          width: 50,
+                          width: 60,
                           height: 50,
                           child: TextField(
+                            cursorColor: gradientTop,
                             style: TextStyle(fontFamily: "Inter", fontWeight: FontWeight.w400, color: themeColors["Text"]),
                             obscureText: false,
                             decoration: InputDecoration(
@@ -658,6 +708,10 @@ class _AppState extends State<App> {
                               floatingLabelBehavior: FloatingLabelBehavior.auto,
                               fillColor: themeColors["Box"],
                               filled: true,
+                              floatingLabelStyle: TextStyle(fontFamily: "Inter", fontWeight: FontWeight.w400, color: gradientTop),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: gradientTop),
+                              ),
                             ),
                             onChanged: (value) {
                               season2 = value;
@@ -666,9 +720,10 @@ class _AppState extends State<App> {
                         ),
                         const SizedBox(width: 10),
                         SizedBox(
-                          width: 50,
+                          width: 60,
                           height: 50,
                           child: TextField(
+                            cursorColor: gradientTop,
                             style: TextStyle(fontFamily: "Inter", fontWeight: FontWeight.w400, color: themeColors["Text"]),
                             obscureText: false,
                             decoration: InputDecoration(
@@ -676,6 +731,10 @@ class _AppState extends State<App> {
                               floatingLabelBehavior: FloatingLabelBehavior.auto,
                               fillColor: themeColors["Box"],
                               filled: true,
+                              floatingLabelStyle: TextStyle(fontFamily: "Inter", fontWeight: FontWeight.w400, color: gradientTop),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: gradientTop),
+                              ),
                             ),
                             onChanged: (value) {
                               episode2 = value;
@@ -717,9 +776,10 @@ class _AppState extends State<App> {
                           )),
                         ),
                         SizedBox(
-                          width: 50,
+                          width: 60,
                           height: 50,
                           child: TextField(
+                            cursorColor: gradientTop,
                             style: TextStyle(fontFamily: "Inter", fontWeight: FontWeight.w400, color: themeColors["Text"]),
                             obscureText: false,
                             decoration: InputDecoration(
@@ -727,6 +787,11 @@ class _AppState extends State<App> {
                               floatingLabelBehavior: FloatingLabelBehavior.auto,
                               fillColor: themeColors["Box"],
                               filled: true,
+                              floatingLabelStyle: TextStyle(fontFamily: "Inter", fontWeight: FontWeight.w400, color: gradientTop),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: gradientTop),
+                              ),
+                              
                             ),
                             onChanged: (value) {
                               season = value;
