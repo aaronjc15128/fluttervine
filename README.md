@@ -4,7 +4,7 @@
 A simple GUI for freevine made with Flutter
 
 ## Installation
-💡 Requires [freevine](https://github.com/stabbedbybrick/freevine) to be installed with all its requirements
+- Requires [freevine](https://github.com/stabbedbybrick/freevine) to be installed with all its requirements
 <table>
     <thead>
         <tr>
