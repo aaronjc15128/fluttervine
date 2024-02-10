@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:io';
 
+import 'package:file_picker/file_picker.dart';
+
 import 'package:fluttervine/theme_colors.dart';
 
 void main() {
@@ -39,11 +41,48 @@ class _AppState extends State<App> {
   String download = "...";
   String titles = "...";
   List<String> commands = ["...", "...", "..."];
+  String scriptPath = "...";
+  late String downloadsPath;
   List<List<String>> parameters = [[], [], []];
 
+  IconData scriptIcon = Icons.not_interested_rounded;
   List<bool> toggle = [false, false, false, false];
   List<double> toggleOpacity = [0.2, 0.2, 0.2, 0.2];
 
+  void openScript() async {
+    try {
+      FilePickerResult? result = await FilePicker.platform.pickFiles(
+        type: FileType.custom,
+        allowedExtensions: ["py"],
+      );
+
+      if (result != null) {
+        scriptPath = result.files.first.path!;
+        setState(() {
+          scriptIcon = Icons.done_rounded;
+        });
+      }
+    }
+    catch (e) {
+      
+    }
+  }
+  /*
+  void openDownloads() async {
+    try {
+      FilePickerResult? result = await FilePicker.platform.pickFiles(
+        type: FileType.custom,
+        allowedExtensions: ['pdf', 'doc', 'docx'],
+      );
+
+      if (result != null) {
+        downloadsPath = result.files.first.path!;
+      }
+    } catch (e) {
+      
+    }
+  }
+  */
   void getCommand() {
     setState(() {
       if (service != "...") {
@@ -681,6 +720,60 @@ class _AppState extends State<App> {
                       ],
                     ),
                   ),
+                  const SizedBox(height: 50),
+
+                  // ~ Options
+                  Text("Options", textAlign: TextAlign.left, style: TextStyle(
+                    fontFamily: "Poppins",
+                    fontWeight: FontWeight.w600,
+                    fontStyle: FontStyle.italic,
+                    fontSize: 16,
+                    color: themeColors["Text"],
+                  )),
+                  const SizedBox(height: 10),
+                  Row(
+                    children: [
+                      const Column(
+                        children: [
+                          // * resolution options here
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          ElevatedButton(
+                            onPressed: () {
+                              openScript();
+                            },
+                            style: ElevatedButton.styleFrom(
+                              elevation: 0,
+                              fixedSize: const Size(250, 40),
+                              backgroundColor: themeColors["Box"],
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text("freevine.py location", style: TextStyle(
+                                  fontFamily: "Inter",
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 16,
+                                  color: themeColors["Text"],
+                                )),
+                                const SizedBox(width: 20),
+                                Icon(scriptIcon, color: themeColors["Text"]),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(height: 10),
+                        ],
+                      ),
+                    ],
+                  ),
+                  Text(scriptPath, style: TextStyle(
+                    fontFamily: "Inter",
+                    fontSize: 14,
+                    color: themeColors["Text"],
+                  )),
                   const SizedBox(height: 50),
                   
                   // ~ Buttons
