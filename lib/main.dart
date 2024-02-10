@@ -273,6 +273,7 @@ class _AppState extends State<App> {
                               fixedSize: const Size(140, 40),
                               backgroundColor: themeColors["Box"],
                               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                              foregroundColor: themeColors["iPlayer"],
                             ),
                             child: Text("BBC iPlayer", style: TextStyle(
                               fontFamily: "Inter",
@@ -292,6 +293,7 @@ class _AppState extends State<App> {
                               fixedSize: const Size(140, 40),
                               backgroundColor: themeColors["Box"],
                               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                              foregroundColor: themeColors["ITVX"],
                             ),
                             child: Text("ITVX", style: TextStyle(
                               fontFamily: "Inter",
@@ -311,6 +313,7 @@ class _AppState extends State<App> {
                               fixedSize: const Size(140, 40),
                               backgroundColor: themeColors["Box"],
                               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                              foregroundColor: themeColors["All4"],
                             ),
                             child: Text("All4", style: TextStyle(
                               fontFamily: "Inter",
@@ -330,6 +333,7 @@ class _AppState extends State<App> {
                               fixedSize: const Size(140, 40),
                               backgroundColor: themeColors["Box"],
                               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                              foregroundColor: themeColors["My5"],
                             ),
                             child: Text("My5", style: TextStyle(
                               fontFamily: "Inter",
@@ -353,6 +357,7 @@ class _AppState extends State<App> {
                               fixedSize: const Size(140, 40),
                               backgroundColor: themeColors["Box"],
                               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                              foregroundColor: themeColors["STV"],
                             ),
                             child: Text("STV Player", style: TextStyle(
                               fontFamily: "Inter",
@@ -372,6 +377,7 @@ class _AppState extends State<App> {
                               fixedSize: const Size(140, 40),
                               backgroundColor: themeColors["Box"],
                               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                              foregroundColor: themeColors["UKTVPlay"],
                             ),
                             child: Text("UKTVPlay", style: TextStyle(
                               fontFamily: "Inter",
@@ -830,6 +836,7 @@ class _AppState extends State<App> {
                               fixedSize: const Size(250, 40),
                               backgroundColor: themeColors["Box"],
                               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                              foregroundColor: themeColors["Box"],
                             ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -869,6 +876,7 @@ class _AppState extends State<App> {
                           fixedSize: const Size(140, 40),
                           backgroundColor: themeColors["Box"],
                           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                          foregroundColor: themeColors["Box"],
                         ),
                         child: Text("Commands", style: TextStyle(
                           fontFamily: "Inter",
@@ -887,6 +895,7 @@ class _AppState extends State<App> {
                           fixedSize: const Size(140, 40),
                           backgroundColor: themeColors["Box"],
                           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                          foregroundColor: themeColors["Box"],
                         ),
                         child: Text("Titles", style: TextStyle(
                           fontFamily: "Inter",
@@ -905,6 +914,7 @@ class _AppState extends State<App> {
                           fixedSize: const Size(140, 40),
                           backgroundColor: themeColors["Box"],
                           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                          foregroundColor: themeColors["Box"],
                         ),
                         child: Text("Download", style: TextStyle(
                           fontFamily: "Inter",
