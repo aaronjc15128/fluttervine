@@ -28,6 +28,7 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
+  String version = "v1.0.0-beta.2";
   
   Color gradientTop = themeColors["Background-Light"];
   String service = "...";
@@ -42,7 +43,7 @@ class _AppState extends State<App> {
   String titles = "...";
   List<String> commands = ["...", "...", "..."];
   String scriptPath = "...";
-  late String downloadsPath;
+  //late String downloadsPath;
   List<List<String>> parameters = [[], [], []];
 
   IconData scriptIcon = Icons.not_interested_rounded;
@@ -64,7 +65,7 @@ class _AppState extends State<App> {
       }
     }
     catch (e) {
-      
+      scriptPath = e.toString();    
     }
   }
   /*
@@ -178,13 +179,17 @@ class _AppState extends State<App> {
             actions: const [],
             backgroundColor: Colors.transparent,
 
-            title: Text("FlutterVine", style: TextStyle(
-              fontFamily: "Poppins",
-              fontWeight: FontWeight.w300,
-              fontStyle: FontStyle.italic,
-              fontSize: 32,
-              color: themeColors["Text"],
-            )),
+            title: Column(
+              children: [
+                Text("FlutterVine", style: TextStyle(
+                  fontFamily: "Poppins",
+                  fontWeight: FontWeight.w300,
+                  fontStyle: FontStyle.italic,
+                  fontSize: 32,
+                  color: themeColors["Text"],
+                )),
+              ],
+            ),
           ),
         ),
 
@@ -208,6 +213,13 @@ class _AppState extends State<App> {
                     fontWeight: FontWeight.w400,
                     fontStyle: FontStyle.italic,
                     fontSize: 16,
+                    color: themeColors["Text"],
+                  )),
+                  Text(version, style: TextStyle(
+                    fontFamily: "Poppins",
+                    fontWeight: FontWeight.w400,
+                    fontStyle: FontStyle.italic,
+                    fontSize: 14,
                     color: themeColors["Text"],
                   )),
                   const SizedBox(height: 50),
