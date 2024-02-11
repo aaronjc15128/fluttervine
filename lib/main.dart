@@ -28,7 +28,7 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
-  String version = "v1.0.0-beta.2";
+  String version = "v1.0.0-beta.3";
   
   Color gradientTop = themeColors["Background-Light"];
   String service = "...";
@@ -265,7 +265,7 @@ class _AppState extends State<App> {
                             onPressed: () {
                               setState(() {
                                 gradientTop = themeColors["iPlayer"];
-                                service = "BBC iPlayer";
+                                service = "BBC";
                               });
                             },
                             style: ElevatedButton.styleFrom(
@@ -305,7 +305,7 @@ class _AppState extends State<App> {
                             onPressed: () {
                               setState(() {
                                 gradientTop = themeColors["All4"];
-                                service = "All4";
+                                service = "ALL4";
                               });
                             },
                             style: ElevatedButton.styleFrom(
@@ -325,7 +325,7 @@ class _AppState extends State<App> {
                             onPressed: () {
                               setState(() {
                                 gradientTop = themeColors["My5"];
-                                service = "My5";
+                                service = "MY5";
                               });
                             },
                             style: ElevatedButton.styleFrom(
@@ -349,7 +349,7 @@ class _AppState extends State<App> {
                             onPressed: () {
                               setState(() {
                                 gradientTop = themeColors["STV"];
-                                service = "STV Player";
+                                service = "STV";
                               });
                             },
                             style: ElevatedButton.styleFrom(
@@ -369,7 +369,7 @@ class _AppState extends State<App> {
                             onPressed: () {
                               setState(() {
                                 gradientTop = themeColors["UKTVPlay"];
-                                service = "UKTVPlay";
+                                service = "UKTVPLAY";
                               });
                             },
                             style: ElevatedButton.styleFrom(
@@ -385,8 +385,260 @@ class _AppState extends State<App> {
                               color: themeColors["Text"],
                             )),
                           ), const SizedBox(width: 5),
+                          ElevatedButton(
+                            onPressed: () {
+                              setState(() {
+                                gradientTop = themeColors["Roku"];
+                                service = "ROKU";
+                              });
+                            },
+                            style: ElevatedButton.styleFrom(
+                              elevation: 0,
+                              fixedSize: const Size(140, 40),
+                              backgroundColor: themeColors["Box"],
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                              foregroundColor: themeColors["Roku"],
+                            ),
+                            child: Text("Roku", style: TextStyle(
+                              fontFamily: "Inter",
+                              fontSize: 16,
+                              color: themeColors["Text"],
+                            )),
+                          ), const SizedBox(width: 5),
+                          ElevatedButton(
+                            onPressed: () {
+                              setState(() {
+                                gradientTop = themeColors["Crackle"];
+                                service = "CRACKLE";
+                              });
+                            },
+                            style: ElevatedButton.styleFrom(
+                              elevation: 0,
+                              fixedSize: const Size(140, 40),
+                              backgroundColor: themeColors["Box"],
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                              foregroundColor: themeColors["Crackle"],
+                            ),
+                            child: Text("Crackle", style: TextStyle(
+                              fontFamily: "Inter",
+                              fontSize: 16,
+                              color: themeColors["Text"],
+                            )),
+                          ), const SizedBox(width: 5),
                         ],
-                      ),
+                      ), const SizedBox(height: 5),
+                      Row(
+                        children: [
+                          ElevatedButton(
+                            onPressed: () {
+                              setState(() {
+                                gradientTop = themeColors["CWTV"];
+                                service = "CW";
+                              });
+                            },
+                            style: ElevatedButton.styleFrom(
+                              elevation: 0,
+                              fixedSize: const Size(140, 40),
+                              backgroundColor: themeColors["Box"],
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                              foregroundColor: themeColors["CWTV"],
+                            ),
+                            child: Text("CWTV", style: TextStyle(
+                              fontFamily: "Inter",
+                              fontSize: 16,
+                              color: themeColors["Text"],
+                            )),
+                          ), const SizedBox(width: 5),
+                          ElevatedButton(
+                            onPressed: () {
+                              setState(() {
+                                gradientTop = themeColors["TubiTV"];
+                                service = "TUBITV";
+                              });
+                            },
+                            style: ElevatedButton.styleFrom(
+                              elevation: 0,
+                              fixedSize: const Size(140, 40),
+                              backgroundColor: themeColors["Box"],
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                              foregroundColor: themeColors["TubiTV"],
+                            ),
+                            child: Text("Tubi TV", style: TextStyle(
+                              fontFamily: "Inter",
+                              fontSize: 16,
+                              color: themeColors["Text"],
+                            )),
+                          ), const SizedBox(width: 5),
+                          ElevatedButton(
+                            onPressed: () {
+                              setState(() {
+                                gradientTop = themeColors["PlutoTV"];
+                                service = "PLUTO";
+                              });
+                            },
+                            style: ElevatedButton.styleFrom(
+                              elevation: 0,
+                              fixedSize: const Size(140, 40),
+                              backgroundColor: themeColors["Box"],
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                              foregroundColor: themeColors["PlutoTV"],
+                            ),
+                            child: Text("Pluto TV", style: TextStyle(
+                              fontFamily: "Inter",
+                              fontSize: 16,
+                              color: themeColors["Text"],
+                            )),
+                          ), const SizedBox(width: 5),
+                          ElevatedButton(
+                            onPressed: () {
+                              setState(() {
+                                gradientTop = themeColors["CBCgem"];
+                                service = "CBC";
+                              });
+                            },
+                            style: ElevatedButton.styleFrom(
+                              elevation: 0,
+                              fixedSize: const Size(140, 40),
+                              backgroundColor: themeColors["Box"],
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                              foregroundColor: themeColors["CBCgem"],
+                            ),
+                            child: Text("CBC Gem", style: TextStyle(
+                              fontFamily: "Inter",
+                              fontSize: 16,
+                              color: themeColors["Text"],
+                            )),
+                          ), const SizedBox(width: 5),
+                        ],
+                      ), const SizedBox(height: 5),
+                      Row(
+                        children: [
+                          ElevatedButton(
+                            onPressed: () {
+                              setState(() {
+                                gradientTop = themeColors["CTV"];
+                                service = "CTV";
+                              });
+                            },
+                            style: ElevatedButton.styleFrom(
+                              elevation: 0,
+                              fixedSize: const Size(140, 40),
+                              backgroundColor: themeColors["Box"],
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                              foregroundColor: themeColors["CTV"],
+                            ),
+                            child: Text("CTV", style: TextStyle(
+                              fontFamily: "Inter",
+                              fontSize: 16,
+                              color: themeColors["Text"],
+                            )),
+                          ), const SizedBox(width: 5),
+                          ElevatedButton(
+                            onPressed: () {
+                              setState(() {
+                                gradientTop = themeColors["ABC"];
+                                service = "ABC";
+                              });
+                            },
+                            style: ElevatedButton.styleFrom(
+                              elevation: 0,
+                              fixedSize: const Size(140, 40),
+                              backgroundColor: themeColors["Box"],
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                              foregroundColor: themeColors["ABC"],
+                            ),
+                            child: Text("ABC iView", style: TextStyle(
+                              fontFamily: "Inter",
+                              fontSize: 16,
+                              color: themeColors["Text"],
+                            )),
+                          ), const SizedBox(width: 5),
+                          ElevatedButton(
+                            onPressed: () {
+                              setState(() {
+                                gradientTop = themeColors["TVNZ"];
+                                service = "TVNZ";
+                              });
+                            },
+                            style: ElevatedButton.styleFrom(
+                              elevation: 0,
+                              fixedSize: const Size(140, 40),
+                              backgroundColor: themeColors["Box"],
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                              foregroundColor: themeColors["TVNZ"],
+                            ),
+                            child: Text("TVNZ", style: TextStyle(
+                              fontFamily: "Inter",
+                              fontSize: 16,
+                              color: themeColors["Text"],
+                            )),
+                          ), const SizedBox(width: 5),
+                          ElevatedButton(
+                            onPressed: () {
+                              setState(() {
+                                gradientTop = themeColors["SVTPlay"];
+                                service = "SVTPlay";
+                              });
+                            },
+                            style: ElevatedButton.styleFrom(
+                              elevation: 0,
+                              fixedSize: const Size(140, 40),
+                              backgroundColor: themeColors["Box"],
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                              foregroundColor: themeColors["STVPlay"],
+                            ),
+                            child: Text("SVTPlay", style: TextStyle(
+                              fontFamily: "Inter",
+                              fontSize: 16,
+                              color: themeColors["Text"],
+                            )),
+                          ), const SizedBox(width: 5),
+                        ],
+                      ), const SizedBox(height: 5),
+                      Row(
+                        children: [
+                          ElevatedButton(
+                            onPressed: () {
+                              setState(() {
+                                gradientTop = themeColors["TV4Play"];
+                                service = "TV4Play";
+                              });
+                            },
+                            style: ElevatedButton.styleFrom(
+                              elevation: 0,
+                              fixedSize: const Size(140, 40),
+                              backgroundColor: themeColors["Box"],
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                              foregroundColor: themeColors["TV4Play"],
+                            ),
+                            child: Text("TV4Play", style: TextStyle(
+                              fontFamily: "Inter",
+                              fontSize: 16,
+                              color: themeColors["Text"],
+                            )),
+                          ), const SizedBox(width: 5),
+                          ElevatedButton(
+                            onPressed: () {
+                              setState(() {
+                                gradientTop = themeColors["PlexTV"];
+                                service = "Plex";
+                              });
+                            },
+                            style: ElevatedButton.styleFrom(
+                              elevation: 0,
+                              fixedSize: const Size(140, 40),
+                              backgroundColor: themeColors["Box"],
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                              foregroundColor: themeColors["PlexTV"],
+                            ),
+                            child: Text("Plex.tv", style: TextStyle(
+                              fontFamily: "Inter",
+                              fontSize: 16,
+                              color: themeColors["Text"],
+                            )),
+                          ), const SizedBox(width: 5),
+                        ],
+                      ), const SizedBox(height: 5),
                     ],
                   ),
                   const SizedBox(height: 50),
