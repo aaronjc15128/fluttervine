@@ -47,6 +47,7 @@ class _AppState extends State<App> {
   List<List<String>> parameters = [[], [], []];
 
   IconData scriptIcon = Icons.not_interested_rounded;
+  IconData cacheIcon = Icons.not_interested_rounded;
   List<bool> toggle = [false, false, false, false];
   List<double> toggleOpacity = [0.2, 0.2, 0.2, 0.2];
 
@@ -68,39 +69,32 @@ class _AppState extends State<App> {
       scriptPath = e.toString();    
     }
   }
-  /*
-  void openDownloads() async {
-    try {
-      FilePickerResult? result = await FilePicker.platform.pickFiles(
-        type: FileType.custom,
-        allowedExtensions: ['pdf', 'doc', 'docx'],
-      );
 
-      if (result != null) {
-        downloadsPath = result.files.first.path!;
-      }
-    } catch (e) {
-      
-    }
+  void clearCache() {
+    
+    setState(() {
+      cacheIcon = Icons.done_rounded;
+    });
+    
   }
-  */
+
   void getCommand() {
     setState(() {
       if (service != "...") {
         commands[0] = 'freevine.py profile --username "$username" --password "$password" --service "$service"';
-        parameters[0] = ["--username '$username'", "--password '$password'", "--service '$service'"];
+        //parameters[0] = ["--username '$username'", "--password '$password'", "--service '$service'"];
       }
     });
 
     setState(() {
       commands[1] = 'freevine.py get --titles "$url"';
-      parameters[1] = ["--titles '$url'"];
+      //parameters[1] = ["--titles '$url'"];
     });
 
     setState(() {
       if (toggle[0]) {
         commands[2] = 'freevine.py get --episode "$episode" "$url"';
-        parameters[2] = ["--episode '$episode' '$url'"];
+        //parameters[2] = ["--episode '$episode' '$url'"];
       }
       else {
         if (season.length == 1) {
@@ -108,15 +102,15 @@ class _AppState extends State<App> {
         }
         if (toggle[1]) {
           commands[2] = 'freevine.py get --episode S${season}E$episode "$url"';
-          parameters[2] = ["--episode S${season}E$episode '$url'"];
+          //parameters[2] = ["--episode S${season}E$episode '$url'"];
         }
         else if (toggle[2]) {
           commands[2] = 'freevine.py get --episode S${season}E$episode-S${season2}E$episode2 "$url"';
-          parameters[2] = ["--episode S${season}E$episode-S${season2}E$episode2 '$url'"];
+          //parameters[2] = ["--episode S${season}E$episode-S${season2}E$episode2 '$url'"];
         }
         else if (toggle[3]) {
           commands[2] = 'freevine.py get --season S$season "$url"';
-          parameters[2] = ["--season S$season '$url'"];
+          //parameters[2] = ["--season S$season '$url'"];
         }
       }
     });
@@ -1072,11 +1066,11 @@ class _AppState extends State<App> {
                   const SizedBox(height: 10),
                   Row(
                     children: [
-                      const Column(
+                      /*const Column(
                         children: [
                           // * resolution options here
                         ],
-                      ),
+                      ), const SizedBox(width: 10),*/
                       Column(
                         children: [
                           ElevatedButton(
@@ -1101,6 +1095,36 @@ class _AppState extends State<App> {
                                 )),
                                 const SizedBox(width: 20),
                                 Icon(scriptIcon, color: themeColors["Text"]),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(height: 10),
+                        ],
+                      ), const SizedBox(width: 10),
+                      Column(
+                        children: [
+                          ElevatedButton(
+                            onPressed: () {
+                              clearCache();
+                            },
+                            style: ElevatedButton.styleFrom(
+                              elevation: 0,
+                              fixedSize: const Size(200, 40),
+                              backgroundColor: themeColors["Box"],
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                              foregroundColor: themeColors["Box"],
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text("Clear Cache", style: TextStyle(
+                                  fontFamily: "Inter",
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 16,
+                                  color: themeColors["Text"],
+                                )),
+                                const SizedBox(width: 20),
+                                Icon(cacheIcon, color: themeColors["Text"]),
                               ],
                             ),
                           ),
