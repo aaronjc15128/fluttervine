@@ -43,8 +43,7 @@ class _AppState extends State<App> {
   String titles = "...";
   List<String> commands = ["...", "...", "..."];
   String scriptPath = "...";
-  //late String downloadsPath;
-  List<List<String>> parameters = [[], [], []];
+  //List<List<String>> parameters = [[], [], []];
 
   IconData scriptIcon = Icons.not_interested_rounded;
   IconData cacheIcon = Icons.not_interested_rounded;
@@ -71,14 +70,21 @@ class _AppState extends State<App> {
   }
 
   void clearCache() {
-    
     setState(() {
       cacheIcon = Icons.done_rounded;
     });
-    
   }
 
   void getCommand() {
+    setState(() {
+      if (cacheIcon == Icons.done_rounded) {
+        commands[3] = 'freevine.py clear-cache';
+      }
+      else {
+        commands[3] = '@echo';
+      }
+    });
+
     setState(() {
       if (service != "...") {
         commands[0] = 'freevine.py profile --username "$username" --password "$password" --service "$service"';
@@ -117,10 +123,8 @@ class _AppState extends State<App> {
   }
 
   void runTitles() async {
-    String commandStart = "$scriptPath get";
-
     try {
-      ProcessResult resultA = await Process.run(commandStart, parameters[1]); // ? titles
+      ProcessResult resultA = await Process.run(commands[1], [], runInShell: true); // ? titles
       setState(() {
         titles = resultA.stdout;
       });
@@ -133,16 +137,18 @@ class _AppState extends State<App> {
   }
 
   void runDownload() async {
-    String commandStart = "$scriptPath get";
-
     try {
-      ProcessResult resultA = await Process.run(commandStart, parameters[0]); // ? profile
+      ProcessResult resultA = await Process.run(commands[3], [], runInShell: true); // ? cache
       setState(() {
         download = resultA.stdout;
       });
-      ProcessResult resultB = await Process.run(commandStart, parameters[2]); // ? download
+      ProcessResult resultB = await Process.run(commands[0], [], runInShell: true); // ? profile
       setState(() {
         download = resultB.stdout;
+      });
+      ProcessResult resultC = await Process.run(commands[2], [], runInShell: true); // ? download
+      setState(() {
+        download = resultC.stdout;
       });
     }
     catch (e) {
