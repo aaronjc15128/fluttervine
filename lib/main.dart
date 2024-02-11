@@ -210,7 +210,7 @@ class _AppState extends State<App> {
                   fontSize: 32,
                   color: themeColors["Text"],
                 )),
-                const SizedBox(width: 350),
+                const SizedBox(width: 370),
                 IconButton(
                   onPressed: () {
                     _launchURL("https://github.com/aaronjc15128/fluttervine");
