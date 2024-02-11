@@ -17,14 +17,14 @@ A simple GUI for freevine made with Flutter
         <tr>
             <td>Windows 10</td>
             <td><a
+                href="https://github.com/aaronjc15128/fluttervine/releases/tag/v1.0.0-beta.4"
+                style="color: palegreen; text-decoration: none;"
+            > v1.0.0-beta.4
+            </a></td>
+            <td><a
                 href="https://github.com/aaronjc15128/fluttervine/releases/tag/v1.0.0-beta.3"
                 style="color: khaki; text-decoration: none;"
             > v1.0.0-beta.3
-            </a></td>
-            <td><a
-                href="https://github.com/aaronjc15128/fluttervine/releases/tag/v1.0.0-beta.2"
-                style="color: pink; text-decoration: none;"
-            > v1.0.0-beta.2
             </a></td>
         </tr>
         <tr>
