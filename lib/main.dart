@@ -30,7 +30,7 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
-  String version = "v1.0.0-beta.3";
+  String version = "v1.0.0-beta.4";
   
   Color gradientTop = themeColors["Background-Light"];
   String service = "...";
@@ -98,35 +98,36 @@ class _AppState extends State<App> {
     setState(() {
       if (service != "...") {
         commands[0] = 'freevine.py profile --username "$username" --password "$password" --service "$service"';
-        //parameters[0] = ["--username '$username'", "--password '$password'", "--service '$service'"];
       }
     });
 
     setState(() {
       commands[1] = 'freevine.py get --titles "$url"';
-      //parameters[1] = ["--titles '$url'"];
     });
 
     setState(() {
       if (toggle[0]) {
         commands[2] = 'freevine.py get --episode "$episode" "$url"';
-        //parameters[2] = ["--episode '$episode' '$url'"];
+      }
+      else if (toggle[4]) {
+        commands[2] = 'freevine.py get --movie "$url"';
       }
       else {
         if (season.length == 1) {
           season = "0$season";
         }
+        else if (episode.length == 1) {
+          episode = "0$episode";
+        }
+
         if (toggle[1]) {
           commands[2] = 'freevine.py get --episode S${season}E$episode "$url"';
-          //parameters[2] = ["--episode S${season}E$episode '$url'"];
         }
         else if (toggle[2]) {
           commands[2] = 'freevine.py get --episode S${season}E$episode-S${season2}E$episode2 "$url"';
-          //parameters[2] = ["--episode S${season}E$episode-S${season2}E$episode2 '$url'"];
         }
         else if (toggle[3]) {
           commands[2] = 'freevine.py get --season S$season "$url"';
-          //parameters[2] = ["--season S$season '$url'"];
         }
       }
     });
@@ -134,7 +135,7 @@ class _AppState extends State<App> {
 
   void runTitles() async {
     try {
-      ProcessResult resultA = await Process.run(commands[1], [], runInShell: true); // ? titles
+      ProcessResult resultA = await Process.run(commands[1], []); // ? titles
       setState(() {
         titles = resultA.stdout;
       });
@@ -148,15 +149,15 @@ class _AppState extends State<App> {
 
   void runDownload() async {
     try {
-      ProcessResult resultA = await Process.run(commands[3], [], runInShell: true); // ? cache
+      ProcessResult resultA = await Process.run(commands[3], []); // ? cache
       setState(() {
         download = resultA.stdout;
       });
-      ProcessResult resultB = await Process.run(commands[0], [], runInShell: true); // ? profile
+      ProcessResult resultB = await Process.run(commands[0], []); // ? profile
       setState(() {
         download = resultB.stdout;
       });
-      ProcessResult resultC = await Process.run(commands[2], [], runInShell: true); // ? download
+      ProcessResult resultC = await Process.run(commands[2], []); // ? download
       setState(() {
         download = resultC.stdout;
       });
