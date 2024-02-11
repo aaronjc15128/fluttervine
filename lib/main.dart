@@ -41,14 +41,14 @@ class _AppState extends State<App> {
   late String episode2;
   String download = "...";
   String titles = "...";
-  List<String> commands = ["...", "...", "..."];
+  List<String> commands = ["...", "...", "...", "..."];
   String scriptPath = "...";
-  //List<List<String>> parameters = [[], [], []];
 
   IconData scriptIcon = Icons.not_interested_rounded;
+  bool cache = false;
   IconData cacheIcon = Icons.not_interested_rounded;
-  List<bool> toggle = [false, false, false, false];
-  List<double> toggleOpacity = [0.2, 0.2, 0.2, 0.2];
+  List<bool> toggle = [false, false, false, false, false];
+  List<double> toggleOpacity = [0.2, 0.2, 0.2, 0.2, 0.2];
 
   void openScript() async {
     try {
@@ -71,13 +71,14 @@ class _AppState extends State<App> {
 
   void clearCache() {
     setState(() {
-      cacheIcon = Icons.done_rounded;
+      cache = cache ? false : true;
+      cacheIcon = cache ? Icons.done_rounded : Icons.not_interested_rounded;
     });
   }
 
   void getCommand() {
     setState(() {
-      if (cacheIcon == Icons.done_rounded) {
+      if (cache) {
         commands[3] = 'freevine.py clear-cache';
       }
       else {
@@ -751,8 +752,8 @@ class _AppState extends State<App> {
                                 toggle[0] = true;
                                 toggleOpacity[0] = 1;
                               }
-                              toggle[1] = toggle[2] = toggle[3] = false;
-                              toggleOpacity[1] = toggleOpacity[2] = toggleOpacity[3] = 0.2;
+                              toggle[1] = toggle[2] = toggle[3] = toggle[4] = false;
+                              toggleOpacity[1] = toggleOpacity[2] = toggleOpacity[3] = toggleOpacity[4] = 0.2;
                             });
                           },
                           icon: Icon(toggle[0] ? Icons.check_circle_rounded : Icons.circle_outlined, size: 20, color: themeColors["Text"]),
@@ -807,8 +808,8 @@ class _AppState extends State<App> {
                                 toggle[1] = true;
                                 toggleOpacity[1] = 1;
                               }
-                              toggle[0] = toggle[2] = toggle[3] = false;
-                              toggleOpacity[0] = toggleOpacity[2] = toggleOpacity[3] = 0.2;
+                              toggle[0] = toggle[2] = toggle[3] = toggle[4] = false;
+                              toggleOpacity[0] = toggleOpacity[2] = toggleOpacity[3] = toggleOpacity[4] = 0.2;
                             });
                           },
                           icon: Icon(toggle[1] ? Icons.check_circle_rounded : Icons.circle_outlined, size: 20, color: themeColors["Text"]),
@@ -886,8 +887,8 @@ class _AppState extends State<App> {
                                 toggle[2] = true;
                                 toggleOpacity[2] = 1;
                               }
-                              toggle[0] = toggle[1] = toggle[3] = false;
-                              toggleOpacity[0] = toggleOpacity[1] = toggleOpacity[3] = 0.2;
+                              toggle[0] = toggle[1] = toggle[3] = toggle[4] = false;
+                              toggleOpacity[0] = toggleOpacity[1] = toggleOpacity[3] = toggleOpacity[4] = 0.2;
                             });
                           },
                           icon: Icon(toggle[2] ? Icons.check_circle_rounded : Icons.circle_outlined, size: 20, color: themeColors["Text"]),
@@ -1018,8 +1019,8 @@ class _AppState extends State<App> {
                                 toggle[3] = true;
                                 toggleOpacity[3] = 1;
                               }
-                              toggle[0] = toggle[1] = toggle[2] = false;
-                              toggleOpacity[0] = toggleOpacity[1] = toggleOpacity[2] = 0.2;
+                              toggle[0] = toggle[1] = toggle[2] = toggle[4] = false;
+                              toggleOpacity[0] = toggleOpacity[1] = toggleOpacity[2] = toggleOpacity[4] = 0.2;
                             });
                           },
                           icon: Icon(toggle[3] ? Icons.check_circle_rounded : Icons.circle_outlined, size: 20, color: themeColors["Text"]),
@@ -1055,6 +1056,40 @@ class _AppState extends State<App> {
                               season = value;
                             },
                           ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  Opacity(
+                    opacity: toggleOpacity[4],
+                    child: Row(
+                      children: [
+                        IconButton(
+                          onPressed: () {
+                            setState(() {
+                              if (toggle[4]) {
+                                toggle[4] = false;
+                                toggleOpacity[4] = 0.2;
+                              }
+                              else {
+                                toggle[4] = true;
+                                toggleOpacity[4] = 1;
+                              }
+                              toggle[0] = toggle[1] = toggle[2] = toggle[3] = false;
+                              toggleOpacity[0] = toggleOpacity[1] = toggleOpacity[2] = toggleOpacity[3] = 0.2;
+                            });
+                          },
+                          icon: Icon(toggle[4] ? Icons.check_circle_rounded : Icons.circle_outlined, size: 20, color: themeColors["Text"]),
+                        ),
+                        const SizedBox(width: 5),
+                        SizedBox(
+                          width: 150,
+                          child: Text("Movie", style: TextStyle(
+                            fontFamily: "Inter",
+                            fontSize: 16,
+                            color: themeColors["Text"],
+                          )),
                         ),
                       ],
                     ),
@@ -1216,6 +1251,11 @@ class _AppState extends State<App> {
                     fontFamily: "Poppins",
                     fontWeight: FontWeight.w600,
                     fontStyle: FontStyle.italic,
+                    fontSize: 16,
+                    color: themeColors["Text"],
+                  )),
+                  Text(commands[3], style: TextStyle(
+                    fontFamily: "Inter",
                     fontSize: 16,
                     color: themeColors["Text"],
                   )),
