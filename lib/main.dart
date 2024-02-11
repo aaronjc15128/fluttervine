@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'dart:io';
 
 import 'package:file_picker/file_picker.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'package:fluttervine/theme_colors.dart';
 
@@ -50,6 +51,13 @@ class _AppState extends State<App> {
   IconData cacheIcon = Icons.not_interested_rounded;
   List<bool> toggle = [false, false, false, false, false];
   List<double> toggleOpacity = [0.2, 0.2, 0.2, 0.2, 0.2];
+
+  _launchURL(String urlin) async {
+    final Uri url = Uri.parse(urlin);
+    if (!await launchUrl(url)) {
+      throw Exception('Could not launch $url');
+    }
+  }
 
   void openScript() async {
     try {
@@ -191,10 +199,9 @@ class _AppState extends State<App> {
           preferredSize: const Size.fromHeight(80),
           child: AppBar(
             elevation: 0,
-            actions: const [],
             backgroundColor: Colors.transparent,
 
-            title: Column(
+            title: Row(
               children: [
                 Text("FlutterVine", style: TextStyle(
                   fontFamily: "Poppins",
@@ -203,6 +210,13 @@ class _AppState extends State<App> {
                   fontSize: 32,
                   color: themeColors["Text"],
                 )),
+                const SizedBox(width: 350),
+                IconButton(
+                  onPressed: () {
+                    _launchURL("https://github.com/aaronjc15128/fluttervine");
+                  },
+                  icon: Icon(Icons.code_rounded, color: themeColors["Text"]),
+                ),
               ],
             ),
           ),
