@@ -1,0 +1,84 @@
+{
+	"files": [
+		{
+			"path": "lib/main.dart",
+			"bookmarks": [
+				{
+					"line": 30,
+					"column": 35,
+					"label": "version"
+				},
+				{
+					"line": 52,
+					"column": 27,
+					"label": "openScript()"
+				},
+				{
+					"line": 86,
+					"column": 21,
+					"label": "getCommand()"
+				},
+				{
+					"line": 124,
+					"column": 26,
+					"label": "runTitles()"
+				},
+				{
+					"line": 140,
+					"column": 28,
+					"label": "runDownload()"
+				},
+				{
+					"line": 161,
+					"column": 20,
+					"label": "initState()"
+				},
+				{
+					"line": 169,
+					"column": 38,
+					"label": "Widget build()"
+				},
+				{
+					"line": 239,
+					"column": 40,
+					"label": ""
+				},
+				{
+					"line": 393,
+					"column": 30,
+					"label": ""
+				},
+				{
+					"line": 454,
+					"column": 31,
+					"label": ""
+				},
+				{
+					"line": 811,
+					"column": 30,
+					"label": ""
+				},
+				{
+					"line": 866,
+					"column": 30,
+					"label": ""
+				},
+				{
+					"line": 931,
+					"column": 31,
+					"label": ""
+				},
+				{
+					"line": 956,
+					"column": 29,
+					"label": ""
+				},
+				{
+					"line": 971,
+					"column": 31,
+					"label": ""
+				}
+			]
+		}
+	]
+}
