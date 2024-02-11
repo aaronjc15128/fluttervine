@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'dart:io';
 
 import 'package:file_picker/file_picker.dart';
@@ -1254,26 +1255,70 @@ class _AppState extends State<App> {
                     fontSize: 16,
                     color: themeColors["Text"],
                   )),
-                  Text(commands[3], style: TextStyle(
-                    fontFamily: "Inter",
-                    fontSize: 16,
-                    color: themeColors["Text"],
-                  )),
-                  Text(commands[0], style: TextStyle(
-                    fontFamily: "Inter",
-                    fontSize: 16,
-                    color: themeColors["Text"],
-                  )),
-                  Text(commands[1], style: TextStyle(
-                    fontFamily: "Inter",
-                    fontSize: 16,
-                    color: themeColors["Text"],
-                  )),
-                  Text(commands[2], style: TextStyle(
-                    fontFamily: "Inter",
-                    fontSize: 16,
-                    color: themeColors["Text"],
-                  )),
+                  Row(
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          Clipboard.setData(ClipboardData(text: commands[3]));
+                        },
+                        icon: Icon(Icons.copy_rounded, size: 15, color: themeColors["Text"]),
+                      ),
+                      const SizedBox(width: 5),
+                      Text(commands[3], style: TextStyle(
+                        fontFamily: "Inter",
+                        fontSize: 16,
+                        color: themeColors["Text"],
+                      )),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          Clipboard.setData(ClipboardData(text: commands[0]));
+                        },
+                        icon: Icon(Icons.copy_rounded, size: 15, color: themeColors["Text"]),
+                      ),
+                      const SizedBox(width: 5),
+                      Text(commands[0], style: TextStyle(
+                        fontFamily: "Inter",
+                        fontSize: 16,
+                        color: themeColors["Text"],
+                      )),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          Clipboard.setData(ClipboardData(text: commands[1]));
+                        },
+                        icon: Icon(Icons.copy_rounded, size: 15, color: themeColors["Text"]),
+                      ),
+                      const SizedBox(width: 5),
+                      Text(commands[1], style: TextStyle(
+                        fontFamily: "Inter",
+                        fontSize: 16,
+                        color: themeColors["Text"],
+                      )),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          Clipboard.setData(ClipboardData(text: commands[2]));
+                        },
+                        icon: Icon(Icons.copy_rounded, size: 15, color: themeColors["Text"]),
+                      ),
+                      const SizedBox(width: 5),
+                      Text(commands[2], style: TextStyle(
+                        fontFamily: "Inter",
+                        fontSize: 16,
+                        color: themeColors["Text"],
+                      )),
+                    ],
+                  ),
                   const SizedBox(height: 30),
             
                   // ~ Titles
